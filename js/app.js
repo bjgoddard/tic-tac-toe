@@ -5,7 +5,7 @@ let playerTurn = 'X'
 const playSpace = e => {
   console.log(e.target.id)
   e.target.innerHTML = playerTurn
-  index = boardIndex[e.target.id] 
+  index = boardIndex[e.target.id]
   board[index] = playerTurn
   console.log(board)
   nextTurn()
@@ -26,6 +26,8 @@ const addSpacesPickable = () => {
 const nextTurn = () => {
 //If timer hits 0, change color to indicate next player's turn
     time = 5
+    document.getElementById('timer').textContent = "Player " + playerTurn + ": " + time + " seconds remaining!"
+
         if (playerTurn == 'X') {
             playerTurn = 'O';
             document.getElementById('timer').style.color = 'blue'
@@ -36,11 +38,11 @@ const nextTurn = () => {
 }
 
 const tick = () => {
-    
-    console.log('tick!', time)
-    document.getElementById('timer').textContent = "Player " + playerTurn + ":" + time + " seconds remaining!"
-    //Player ran out of time, call next players turn function
+
     time -= 1
+    document.getElementById('timer').textContent = "Player " + playerTurn + ": " + time + " seconds remaining!"
+    //Player ran out of time, call next players turn function
+
     if (time <= 0) {
         nextTurn()
     }
@@ -73,13 +75,13 @@ boardIndex = {
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
-    [0, 3, 6], 
+    [0, 3, 6],
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
     ]
-    const checkWin = () => 
+    const checkWin = () =>
     checkWin()
 //Let Player1 pick square
 addSpacesPickable()
